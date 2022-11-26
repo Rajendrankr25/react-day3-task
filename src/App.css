@@ -2,15 +2,43 @@
   text-align: center;
 }
 
-.list-items {
-  border: 1px solid gray;
-  height: 400px;
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 300px;
+}
+
+.banner {
+  margin-top: 0px;
+  background-color: yellow;
+  height: 300px;
+}
+
+.b-head {
+  padding-top: 70px;
+  font-size: 70px;
+}
+
+.product-list {
+  margin: 0px 150px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.product-cards {
+  margin: 50px 50px;
+}
+
+.product-card {
+  height: 470px;
   width: 300px;
 }
 
 .p-image {
-  padding-top: 50px;
-  background-color: lightgrey;
-  height: 150px;
+  height: 200px;
   width: 100%;
+  object-fit: cover;
 }
