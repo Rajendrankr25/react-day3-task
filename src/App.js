@@ -4,11 +4,15 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 
 function App() {
+
+  const [addItems, setAddItems] = useState(0);
+  const incrCart = () => setAddItems(addItems + 1);
+  console.log(addItems);
   return (
     <div className="App">
       <AddCart />
       <Welcome />
-      <ProductList />
+      <ProductList incrCart={incrCart} />
     </div>
   );
 }
@@ -22,7 +26,7 @@ function Welcome() {
   )
 }
 
-function ProductList() {
+function ProductList({ incrCart }) {
 
   const productList = [
     {
@@ -86,16 +90,16 @@ function ProductList() {
   return (
     <div className='product-list'>
       {productList.map((data, index) => (
-        <ProductCards key={index} product={data} />
+        <ProductCards key={index} product={data} incrCart={incrCart} />
       ))}
     </div>
   )
 }
 
-function ProductCards({ product }) {
+function ProductCards({ product, incrCart }) {
 
-  const [addItems, setAddItems] = useState(0);
-  const incrCart = () => setAddItems(addItems + 1);
+  // const [addItems, setAddItems] = useState(0);
+  // const incrCart = () => setAddItems(addItems + 1);
 
   return (
     <div className='product-cards'>
@@ -107,18 +111,18 @@ function ProductCards({ product }) {
         <br></br>
         <br></br>
         <br></br>
-        <Button color='error' variant="outlined" onClick={incrCart}>{product.btnText}-{addItems}</Button>
+        <Button color='error' variant="outlined" onClick={incrCart}>{product.btnText}</Button>
       </Card>
     </div>
-
   )
 }
 
-function AddCart({ items }) {
+function AddCart() {
   return (
     <div className='cart'>
       <h1>Home</h1>
-      <Button variant="outlined">🛒 Cart {items}</Button>
+
+      <Button variant="outlined">🛒 Cart</Button>
     </div>
   )
 }

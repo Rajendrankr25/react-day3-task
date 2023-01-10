@@ -23,9 +23,15 @@
 .product-list {
   margin: 0px 150px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
   gap: 0.5rem;
   justify-items: center;
+}
+
+@media(min-width:500px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .product-cards {
