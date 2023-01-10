@@ -5,14 +5,12 @@ import { useState } from 'react';
 
 function App() {
 
-  const [addItems, setAddItems] = useState(true);
-  const incrCart = () => setAddItems(false);
-  console.log(addItems);
+
   return (
     <div className="App">
       <AddCart />
       <Welcome />
-      <ProductList incrCart={incrCart} />
+      <ProductList />
     </div>
   );
 }
@@ -26,7 +24,7 @@ function Welcome() {
   )
 }
 
-function ProductList({ incrCart }) {
+function ProductList() {
 
   const productList = [
     {
@@ -90,16 +88,23 @@ function ProductList({ incrCart }) {
   return (
     <div className='product-list'>
       {productList.map((data, index) => (
-        <ProductCards key={index} product={data} incrCart={incrCart} />
+        <ProductCards key={index} product={data} />
       ))}
     </div>
   )
 }
 
-function ProductCards({ product, incrCart }) {
+function ProductCards({ product }) {
 
-  // const [addItems, setAddItems] = useState(0);
-  // const incrCart = () => setAddItems(addItems + 1);
+  const [addItems, setAddItems] = useState(0);
+  const [btnVariant, setBtnVariant] = useState("outlined");
+  const incrCart = () => {
+    return (
+      setBtnVariant("disabled"),
+      setAddItems(addItems + 1)
+    )
+  }
+  console.log(addItems, btnVariant);
 
   return (
     <div className='product-cards'>
@@ -111,7 +116,7 @@ function ProductCards({ product, incrCart }) {
         <br></br>
         <br></br>
         <br></br>
-        <Button color='error' variant="outlined" onClick={incrCart}>{product.btnText}</Button>
+        <Button color='error' variant={btnVariant} onClick={incrCart}>{product.btnText}</Button>
       </Card>
     </div>
   )
