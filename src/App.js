@@ -5,8 +5,8 @@ import { useState } from 'react';
 
 function App() {
 
-  const [addItems, setAddItems] = useState(0);
-  const incrCart = () => setAddItems(addItems + 1);
+  const [addItems, setAddItems] = useState(true);
+  const incrCart = () => setAddItems(false);
   console.log(addItems);
   return (
     <div className="App">
